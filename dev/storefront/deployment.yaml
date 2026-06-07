@@ -42,3 +42,5 @@ spec:
                   key: YAS_PUBLIC_API_URL
             - name: NODE_ENV
               value: "production"
+            - name: HOSTNAME
+              value: "0.0.0.0"
