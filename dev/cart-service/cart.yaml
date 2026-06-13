@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-cart
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: cart
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /cart
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/cart"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/cart"
+            - name: YAS_SERVICES_MEDIA
+              value: "http://yas-media/media"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "cart-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

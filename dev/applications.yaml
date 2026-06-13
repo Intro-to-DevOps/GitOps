@@ -1,0 +1,1234 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-backoffice-bff
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: backoffice-bff
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "backoffice-bff-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-backoffice-ui
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: backoffice-ui
+    targetRevision: 0.1.0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-storefront-bff
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: storefront-bff
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: YAS_SERVICES_CUSTOMER
+              value: "http://yas-customer/customer"
+            - name: YAS_SERVICES_CART
+              value: "http://yas-cart/cart"
+            - name: YAS_SERVICES_RATING
+              value: "http://yas-rating/rating"
+            - name: YAS_SERVICES_ORDER
+              value: "http://yas-order/order"
+            - name: YAS_SERVICES_LOCATION
+              value: "http://yas-location/location"
+            - name: YAS_SERVICES_INVENTORY
+              value: "http://yas-inventory/inventory"
+            - name: YAS_SERVICES_TAX
+              value: "http://yas-tax/tax"
+            - name: YAS_SERVICES_PROMOTION
+              value: "http://yas-promotion/promotion"
+            - name: YAS_SERVICES_PAYMENT
+              value: "http://yas-payment/payment"
+            - name: YAS_SERVICES_SAMPLE_DATA
+              value: "http://yas-sampledata/sampledata"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "storefront-bff-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-storefront-ui
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: storefront-ui
+    targetRevision: 0.1.0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-swagger-ui
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: swagger-ui
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          env:
+            - name: BASE_URL
+              value: "/swagger-ui"
+            - name: URLS
+              value: "[{ url: 'http://api.yas.local.com/product/v3/api-docs', name: 'Product' },{ url: 'http://api.yas.local.com/media/v3/api-docs', name: 'Media' },{ url: 'http://api.yas.local.com/customer/v3/api-docs', name: 'Customer' },{ url: 'http://api.yas.local.com/cart/v3/api-docs', name: 'Cart'},{ url: 'http://api.yas.local.com/rating/v3/api-docs', name: 'Rating' }, { url: 'http://api.yas.local.com/order/v3/api-docs', name: 'Order'},{ url: 'http://api.yas.local.com/payment/v3/api-docs', name: 'Payment'},{ url: 'http://api.yas.local.com/payment-paypal/v3/api-docs', name: 'Payment-paypal'},{ url: 'http://api.yas.local.com/location/v3/api-docs', name: 'Location'}, { url: 'http://api.yas.local.com/inventory/v3/api-docs', name: 'Inventory'},{ url: 'http://api.yas.local.com/tax/v3/api-docs', name: 'Tax' },{ url: 'http://api.yas.local.com/promotion/v3/api-docs', name: 'Promotion'},{ url: 'http://api.yas.local.com/search/v3/api-docs', name: 'Search'}, { url: 'http://api.yas.local.com/webhook/v3/api-docs', name: 'Webhook'}]"
+            - name: OAUTH_CLIENT_ID
+              value: "swagger-ui"
+            - name: OAUTH_USE_PKCE
+              value: "true"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-cart
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: cart
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /cart
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/cart"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/cart"
+            - name: YAS_SERVICES_MEDIA
+              value: "http://yas-media/media"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "cart-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-customer
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: customer
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /customer
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/customer"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/customer"
+            - name: YAS_SERVICES_LOCATION
+              value: "http://yas-location/location"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "customer-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-inventory
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: inventory
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /inventory
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/inventory"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/inventory"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/inventory"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: YAS_SERVICES_LOCATION
+              value: "http://yas-location/location"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "inventory-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-location
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: location
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /location
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/location"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/location"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/location"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "location-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-media
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: media
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /media
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/media"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/media"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/media"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "media-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-order
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: order
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /order
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/order"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/order"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/order"
+            - name: YAS_SERVICES_CART
+              value: "http://yas-cart/cart"
+            - name: YAS_SERVICES_CUSTOMER
+              value: "http://yas-customer/customer"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: YAS_SERVICES_TAX
+              value: "http://yas-tax/tax"
+            - name: YAS_CURRENCY_UNIT
+              value: "VND"
+            - name: YAS_PRICE_INCLUDES_TAX
+              value: "false"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "order-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-payment
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: payment
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /payment
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/payment"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/payment"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/payment"
+            - name: YAS_SERVICES_ORDER
+              value: "http://yas-order/order"
+            - name: YAS_SERVICES_MEDIA
+              value: "http://yas-media/media"
+            - name: YAS_CURRENCY_UNIT
+              value: "VND"
+            - name: YAS_PRICE_INCLUDES_TAX
+              value: "false"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "payment-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-payment-paypal
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: payment-paypal
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /payment-paypal
+            pathType: ImplementationSpecific
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-product
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: product
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /product
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/product"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/product"
+            - name: YAS_SERVICES_MEDIA
+              value: "http://yas-media/media"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "product-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-promotion
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: promotion
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /promotion
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/promotion"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/promotion"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/promotion"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "promotion-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-rating
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: rating
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /rating
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/rating"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/rating"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/rating"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: YAS_SERVICES_CUSTOMER
+              value: "http://yas-customer/customer"
+            - name: YAS_SERVICES_ORDER
+              value: "http://yas-order/order"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "rate-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-search
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: search
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /search
+            pathType: ImplementationSpecific
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-tax
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: tax
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /tax
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/tax"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/tax"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/tax"
+            - name: YAS_SERVICES_LOCATION
+              value: "http://yas-location/location"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "tax-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-recommendation
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: recommendation
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /recommendation
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/recommendation"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/recommendation"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/recommendation"
+            - name: YAS_SERVICES_PRODUCT
+              value: "http://yas-product/product"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "recommendation-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-webhook
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: webhook
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /webhook
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/webhook"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/webhook"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/webhook"
+            - name: YAS_SERVICES_LOCATION
+              value: "http://yas-location/location"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "webhook-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-sampledata
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://nashtech-garage.github.io/yas/
+    chart: sampledata
+    targetRevision: 0.1.0
+    helm:
+      values: |
+        backend:
+          ingress:
+            enabled: true
+            host: api.yas.local.com
+            path: /sampledata
+            pathType: ImplementationSpecific
+          env:
+            - name: SPRING_DATASOURCE_PRODUCT_URL
+              value: "jdbc:postgresql://postgres:5432/product"
+            - name: SPRING_DATASOURCE_MEDIA_URL
+              value: "jdbc:postgresql://postgres:5432/media"
+            - name: SERVER_SERVLET_CONTEXT_PATH
+              value: "/sampledata"
+            - name: YAS_PUBLIC_URL
+              value: "http://api.yas.local.com/sampledata"
+            - name: YAS_SERVICES_SAMPLE_DATA
+              value: "http://yas-sampledata/sampledata"
+            - name: SERVER_PORT
+              value: "80"
+            - name: LOGGING_CONFIG
+              value: "/app-config/logback-spring.xml"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-javaagent:opentelemetry-javaagent.jar"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://collector:5555"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+              value: "cumulative"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "service.namespace=yas-msa"
+            - name: OTEL_SERVICE_NAME
+              value: "sampledata-service"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+              value: "true"
+            - name: OTEL_JAVAAGENT_LOGGING
+              value: "application"
+            - name: OTEL_JAVAAGENT_ENABLED
+              value: "true"
+            - name: OTEL_JAVAAGENT_DEBUG
+              value: "false"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
