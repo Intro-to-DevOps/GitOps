@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: "https://github.com/Intro-to-DevOps/GitOps.git"
     targetRevision: HEAD
-    path: dev
+    path: .
     directory:
       recurse: true
   destination:
