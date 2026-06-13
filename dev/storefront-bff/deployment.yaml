@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront-bff
+  namespace: yas-dev
+  labels:
+    app: storefront-bff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storefront-bff
+  template:
+    metadata:
+      labels:
+        app: storefront-bff
+    spec:
+      containers:
+      - name: storefront-bff
+        image: ghcr.io/nashtech-garage/yas-storefront-bff:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m
+        envFrom:
+        - configMapRef:
+            name: yas-global-config
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: YAS_SERVICES_CUSTOMER
+          value: http://yas-customer/customer
+        - name: YAS_SERVICES_CART
+          value: http://yas-cart/cart
+        - name: YAS_SERVICES_RATING
+          value: http://yas-rating/rating
+        - name: YAS_SERVICES_ORDER
+          value: http://yas-order/order
+        - name: YAS_SERVICES_LOCATION
+          value: http://yas-location/location
+        - name: YAS_SERVICES_INVENTORY
+          value: http://yas-inventory/inventory
+        - name: YAS_SERVICES_TAX
+          value: http://yas-tax/tax
+        - name: YAS_SERVICES_PROMOTION
+          value: http://yas-promotion/promotion
+        - name: YAS_SERVICES_PAYMENT
+          value: http://yas-payment/payment
+        - name: YAS_SERVICES_SAMPLE_DATA
+          value: http://yas-sampledata/sampledata
+        - name: SERVER_PORT
+          value: '80'
+        - name: LOGGING_CONFIG
+          value: /app-config/logback-spring.xml
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:opentelemetry-javaagent.jar
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://collector:5555
+        - name: OTEL_EXPORTER_OTLP_PROTOCOL
+          value: grpc
+        - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          value: cumulative
+        - name: OTEL_RESOURCE_ATTRIBUTES
+          value: service.namespace=yas-msa
+        - name: OTEL_SERVICE_NAME
+          value: storefront-bff-service
+        - name: OTEL_LOGS_EXPORTER
+          value: otlp
+        - name: OTEL_TRACES_EXPORTER
+          value: otlp
+        - name: OTEL_METRICS_EXPORTER
+          value: otlp
+        - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+          value: 'true'
+        - name: OTEL_JAVAAGENT_LOGGING
+          value: application
+        - name: OTEL_JAVAAGENT_ENABLED
+          value: 'true'
+        - name: OTEL_JAVAAGENT_DEBUG
+          value: 'false'

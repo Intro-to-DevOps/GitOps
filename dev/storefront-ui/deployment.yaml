@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront-ui
+  namespace: yas-dev
+  labels:
+    app: storefront-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storefront-ui
+  template:
+    metadata:
+      labels:
+        app: storefront-ui
+    spec:
+      containers:
+      - name: storefront-ui
+        image: ghcr.io/nashtech-garage/yas-storefront-ui:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m

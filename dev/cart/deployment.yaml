@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  namespace: yas-dev
+  labels:
+    app: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  template:
+    metadata:
+      labels:
+        app: cart
+    spec:
+      containers:
+      - name: cart
+        image: ghcr.io/nashtech-garage/yas-cart:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m
+        envFrom:
+        - configMapRef:
+            name: yas-global-config
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://postgres:5432/cart
+        - name: SERVER_SERVLET_CONTEXT_PATH
+          value: /cart
+        - name: YAS_SERVICES_MEDIA
+          value: http://yas-media/media
+        - name: YAS_SERVICES_PRODUCT
+          value: http://yas-product/product
+        - name: SERVER_PORT
+          value: '80'
+        - name: LOGGING_CONFIG
+          value: /app-config/logback-spring.xml
+        - name: JAVA_TOOL_OPTIONS
+          value: -javaagent:opentelemetry-javaagent.jar
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://collector:5555
+        - name: OTEL_EXPORTER_OTLP_PROTOCOL
+          value: grpc
+        - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          value: cumulative
+        - name: OTEL_RESOURCE_ATTRIBUTES
+          value: service.namespace=yas-msa
+        - name: OTEL_SERVICE_NAME
+          value: cart-service
+        - name: OTEL_LOGS_EXPORTER
+          value: otlp
+        - name: OTEL_TRACES_EXPORTER
+          value: otlp
+        - name: OTEL_METRICS_EXPORTER
+          value: otlp
+        - name: OTEL_INSTRUMENTATION_LOGBACK-MDC_ADD-BAGGAGE
+          value: 'true'
+        - name: OTEL_JAVAAGENT_LOGGING
+          value: application
+        - name: OTEL_JAVAAGENT_ENABLED
+          value: 'true'
+        - name: OTEL_JAVAAGENT_DEBUG
+          value: 'false'
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: yas-db-secret
+              key: POSTGRES_USER
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: yas-db-secret
+              key: POSTGRES_PASSWORD

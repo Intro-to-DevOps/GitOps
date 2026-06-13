@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backoffice-bff
+  namespace: yas-dev
+  labels:
+    app: backoffice-bff
+spec:
+  type: ClusterIP
+  selector:
+    app: backoffice-bff
+  ports:
+  - port: 80
+    targetPort: 80

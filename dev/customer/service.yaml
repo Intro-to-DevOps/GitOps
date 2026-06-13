@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer
+  namespace: yas-dev
+  labels:
+    app: customer
+spec:
+  type: ClusterIP
+  selector:
+    app: customer
+  ports:
+  - port: 80
+    targetPort: 80

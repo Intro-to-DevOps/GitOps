@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swagger-ui
+  namespace: yas-dev
+  labels:
+    app: swagger-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swagger-ui
+  template:
+    metadata:
+      labels:
+        app: swagger-ui
+    spec:
+      containers:
+      - name: swagger-ui
+        image: swaggerapi/swagger-ui:v4.16.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m
+        env:
+        - name: BASE_URL
+          value: /swagger-ui
+        - name: URLS
+          value: '[{ url: ''http://api.yas.local.com/product/v3/api-docs'', name:
+            ''Product'' },{ url: ''http://api.yas.local.com/media/v3/api-docs'', name:
+            ''Media'' },{ url: ''http://api.yas.local.com/customer/v3/api-docs'',
+            name: ''Customer'' },{ url: ''http://api.yas.local.com/cart/v3/api-docs'',
+            name: ''Cart''},{ url: ''http://api.yas.local.com/rating/v3/api-docs'',
+            name: ''Rating'' }, { url: ''http://api.yas.local.com/order/v3/api-docs'',
+            name: ''Order''},{ url: ''http://api.yas.local.com/payment/v3/api-docs'',
+            name: ''Payment''},{ url: ''http://api.yas.local.com/payment-paypal/v3/api-docs'',
+            name: ''Payment-paypal''},{ url: ''http://api.yas.local.com/location/v3/api-docs'',
+            name: ''Location''}, { url: ''http://api.yas.local.com/inventory/v3/api-docs'',
+            name: ''Inventory''},{ url: ''http://api.yas.local.com/tax/v3/api-docs'',
+            name: ''Tax'' },{ url: ''http://api.yas.local.com/promotion/v3/api-docs'',
+            name: ''Promotion''},{ url: ''http://api.yas.local.com/search/v3/api-docs'',
+            name: ''Search''}, { url: ''http://api.yas.local.com/webhook/v3/api-docs'',
+            name: ''Webhook''}]'
+        - name: OAUTH_CLIENT_ID
+          value: swagger-ui
+        - name: OAUTH_USE_PKCE
+          value: 'true'

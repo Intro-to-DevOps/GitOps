@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backoffice-ui
+  namespace: yas-dev
+  labels:
+    app: backoffice-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backoffice-ui
+  template:
+    metadata:
+      labels:
+        app: backoffice-ui
+    spec:
+      containers:
+      - name: backoffice-ui
+        image: ghcr.io/nashtech-garage/yas-backoffice-ui:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m
