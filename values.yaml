@@ -1,0 +1,15 @@
+# Default values for yas-umbrella.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  # Global configurations can go here
+  # For example, a default domain if subcharts support it
+  domain: "yas.local"
+
+# Example of overriding a subchart value
+# backoffice-bff:
+#   replicaCount: 1
+
+# storefront-bff:
+#   replicaCount: 1

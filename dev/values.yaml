@@ -1,0 +1,96 @@
+global:
+  domain: "yas.local"
+
+backoffice-bff:
+  backend:
+    ingress:
+      host: "backoffice.yas.local"
+
+storefront-bff:
+  backend:
+    ingress:
+      host: "storefront.yas.local"
+
+swagger-ui:
+  ingress:
+    host: "api.yas.local"
+
+cart:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+customer:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+inventory:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+location:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+media:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+order:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+payment:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+payment-paypal:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+product:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+promotion:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+rating:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+search:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+tax:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+recommendation:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+webhook:
+  backend:
+    ingress:
+      host: "api.yas.local"
+
+sampledata:
+  backend:
+    ingress:
+      host: "api.yas.local"
