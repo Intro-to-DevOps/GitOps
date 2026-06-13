@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: inventory
+  namespace: yas-dev
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: api.yas.local.com
+    http:
+      paths:
+      - path: /inventory
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: inventory
+            port:
+              number: 80

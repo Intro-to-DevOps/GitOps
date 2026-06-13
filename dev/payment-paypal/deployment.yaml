@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-paypal
+  namespace: yas-dev
+  labels:
+    app: payment-paypal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-paypal
+  template:
+    metadata:
+      labels:
+        app: payment-paypal
+    spec:
+      containers:
+      - name: payment-paypal
+        image: ghcr.io/nashtech-garage/yas-payment-paypal:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 100m
+          limits:
+            memory: 512Mi
+            cpu: 500m
+        envFrom:
+        - configMapRef:
+            name: yas-global-config
