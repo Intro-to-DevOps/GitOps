@@ -28,7 +28,7 @@ cart:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-cart
-      tag: latest
+      tag: v1.0.3
     ingress:
       host: "api.yas-staging.local"
 
