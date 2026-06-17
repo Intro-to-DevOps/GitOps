@@ -1,0 +1,153 @@
+global:
+  domain: "yas-staging.local"
+
+backoffice-bff:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-backoffice-bff
+      tag: latest
+    ingress:
+      host: "backoffice.yas-staging.local"
+
+storefront-bff:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-storefront-bff
+      tag: latest
+    ingress:
+      host: "storefront.yas-staging.local"
+
+swagger-ui:
+  image:
+    repository: ghcr.io/nashtech-garage/yas-swagger-ui
+    tag: latest
+  ingress:
+    host: "api.yas-staging.local"
+
+cart:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-cart
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+customer:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-customer
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+inventory:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-inventory
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+location:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-location
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+media:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-media
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+order:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-order
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+payment:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-payment
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+payment-paypal:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-payment-paypal
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+product:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-product
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+promotion:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-promotion
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+rating:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-rating
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+search:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-search
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+tax:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-tax
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+recommendation:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-recommendation
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+webhook:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-webhook
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
+
+sampledata:
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-sampledata
+      tag: latest
+    ingress:
+      host: "api.yas-staging.local"
