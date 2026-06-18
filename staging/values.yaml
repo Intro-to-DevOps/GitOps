@@ -27,8 +27,8 @@ swagger-ui:
 cart:
   backend:
     image:
-      repository: ghcr.io/nashtech-garage/yas-cart
-      tag: v1.0.3
+      repository: mk1505/yas-cart
+      tag: 874884ea 
     ingress:
       host: "api.yas-staging.local"
 
