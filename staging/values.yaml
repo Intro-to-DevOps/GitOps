@@ -28,7 +28,7 @@ cart:
   backend:
     image:
       repository: mk1505/yas-cart
-      tag: 467416e5 
+      tag: "467416e5" 
     ingress:
       host: "api.yas-staging.local"
 
