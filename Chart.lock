@@ -2,29 +2,11 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
-- name: storefront-ui
-  repository: file://../yas/k8s/charts/storefront-ui
-  version: 0.1.0
-- name: swagger-ui
-  repository: file://../yas/k8s/charts/swagger-ui
-  version: 0.1.0
 - name: cart
   repository: file://../yas/k8s/charts/cart
   version: 0.2.0
 - name: customer
   repository: file://../yas/k8s/charts/customer
   version: 0.1.0
-- name: inventory
-  repository: file://../yas/k8s/charts/inventory
-  version: 0.1.0
-- name: media
-  repository: file://../yas/k8s/charts/media
-  version: 0.1.0
-- name: order
-  repository: file://../yas/k8s/charts/order
-  version: 0.2.0
-- name: product
-  repository: file://../yas/k8s/charts/product
-  version: 0.1.0
-digest: sha256:4197192d856e6c8fe7f075ab4f7c2bfd54681b907b65c0896f8446ced40cc8d1
-generated: "2026-06-13T21:22:29.603717651+07:00"
+digest: sha256:b52cf5b9d5794a34ed7bea0c9ce2b718b3c6244fc52746a15dfcfcb7c8aed256
+generated: "2026-06-18T22:27:22.8723534+07:00"
