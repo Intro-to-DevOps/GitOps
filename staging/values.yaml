@@ -4,11 +4,12 @@ global:
 backoffice-bff:
   backend:
     image:
-      repository: ghcr.io/nashtech-garage/yas-backoffice-bff
-      tag: latest
+      repository: mk1505/yas-cart
+      tag: "467416e5"
+
     service:
       type: NodePort
-      nodePort: 30081
+      nodePort: 300100
 
 storefront-bff:
   backend:
@@ -32,6 +33,7 @@ cart:
     image:
       repository: mk1505/yas-cart
       tag: "467416e5"
+
     service:
       type: NodePort
       nodePort: 30084
