@@ -5,8 +5,11 @@ dependencies:
 - name: storefront-bff
   repository: file://../yas/k8s/charts/storefront-bff
   version: 0.1.0
+- name: swagger-ui
+  repository: file://../yas/k8s/charts/swagger-ui
+  version: 0.1.0
 - name: cart
   repository: file://../yas/k8s/charts/cart
   version: 0.2.0
-digest: sha256:4164287f36528ad3d750e8c86a707c45e59f732ca49439ecdeb6f86b227fa1a2
-generated: "2026-06-21T12:28:36.3239778+07:00"
+digest: sha256:c012e019433c160031886dd454435f6ee540981efa91d8ee69818d314f50d12a
+generated: "2026-06-21T21:46:02.453171054+07:00"

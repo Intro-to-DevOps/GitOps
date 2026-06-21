@@ -21,9 +21,9 @@ dependencies:
   # - name: storefront-ui
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/storefront-ui
-  # - name: swagger-ui
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/swagger-ui
+  - name: swagger-ui
+    version: ">=0.0.0-0"
+    repository: file://../yas/k8s/charts/swagger-ui
   - name: cart
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/cart
