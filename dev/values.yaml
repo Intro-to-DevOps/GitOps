@@ -19,7 +19,7 @@ storefront-bff:
       enabled: false
     image:
       repository: mk1505/yas-storefront-bff
-      tag: 02f4db53
+      tag: ba0e8e64
 swagger-ui:
   service:
     type: NodePort
@@ -38,7 +38,7 @@ cart:
       enabled: false
     image:
       repository: mk1505/yas-cart
-      tag: 02f4db53
+      tag: ba0e8e64
 customer:
   backend:
     service:
@@ -46,6 +46,9 @@ customer:
       nodePort: 30204
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-customer
+      tag: ba0e8e64
 inventory:
   backend:
     service:
@@ -97,7 +100,7 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: 02f4db53
+      tag: ba0e8e64
 promotion:
   backend:
     service:
