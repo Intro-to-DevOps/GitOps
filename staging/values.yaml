@@ -6,10 +6,11 @@ backoffice-bff:
     image:
       repository: mk1505/yas-cart
       tag: "467416e5"
-
     service:
       type: NodePort
       nodePort: 300100
+    ingress:
+      enabled: false
 
 storefront-bff:
   backend:
@@ -19,24 +20,30 @@ storefront-bff:
     service:
       type: NodePort
       nodePort: 30082
+    ingress:
+      enabled: false
 
 swagger-ui:
-  image:
-    repository: ghcr.io/nashtech-garage/yas-swagger-ui
-    tag: latest
-  service:
-    type: NodePort
-    nodePort: 30083
+  backend:
+    image:
+      repository: ghcr.io/nashtech-garage/yas-swagger-ui
+      tag: latest
+    service:
+      type: NodePort
+      nodePort: 30083
+    ingress:
+      enabled: false
 
 cart:
   backend:
     image:
       repository: mk1505/yas-cart
       tag: "467416e5"
-
     service:
       type: NodePort
       nodePort: 30084
+    ingress:
+      enabled: false
 
 customer:
   backend:
@@ -46,6 +53,8 @@ customer:
     service:
       type: NodePort
       nodePort: 30085
+    ingress:
+      enabled: false
 
 inventory:
   backend:
@@ -55,6 +64,8 @@ inventory:
     service:
       type: NodePort
       nodePort: 30086
+    ingress:
+      enabled: false
 
 location:
   backend:
@@ -64,6 +75,8 @@ location:
     service:
       type: NodePort
       nodePort: 30087
+    ingress:
+      enabled: false
 
 media:
   backend:
@@ -73,6 +86,8 @@ media:
     service:
       type: NodePort
       nodePort: 30088
+    ingress:
+      enabled: false
 
 order:
   backend:
@@ -82,6 +97,8 @@ order:
     service:
       type: NodePort
       nodePort: 30089
+    ingress:
+      enabled: false
 
 payment:
   backend:
@@ -91,6 +108,8 @@ payment:
     service:
       type: NodePort
       nodePort: 30090
+    ingress:
+      enabled: false
 
 payment-paypal:
   backend:
@@ -100,6 +119,8 @@ payment-paypal:
     service:
       type: NodePort
       nodePort: 30091
+    ingress:
+      enabled: false
 
 product:
   backend:
@@ -109,6 +130,8 @@ product:
     service:
       type: NodePort
       nodePort: 30092
+    ingress:
+      enabled: false
 
 promotion:
   backend:
@@ -118,6 +141,8 @@ promotion:
     service:
       type: NodePort
       nodePort: 30093
+    ingress:
+      enabled: false
 
 rating:
   backend:
@@ -127,6 +152,8 @@ rating:
     service:
       type: NodePort
       nodePort: 30094
+    ingress:
+      enabled: false
 
 search:
   backend:
@@ -136,6 +163,8 @@ search:
     service:
       type: NodePort
       nodePort: 30095
+    ingress:
+      enabled: false
 
 tax:
   backend:
@@ -145,6 +174,8 @@ tax:
     service:
       type: NodePort
       nodePort: 30096
+    ingress:
+      enabled: false
 
 recommendation:
   backend:
@@ -154,6 +185,8 @@ recommendation:
     service:
       type: NodePort
       nodePort: 30097
+    ingress:
+      enabled: false
 
 webhook:
   backend:
@@ -163,6 +196,8 @@ webhook:
     service:
       type: NodePort
       nodePort: 30098
+    ingress:
+      enabled: false
 
 sampledata:
   backend:
@@ -172,3 +207,5 @@ sampledata:
     service:
       type: NodePort
       nodePort: 30099
+    ingress:
+      enabled: false

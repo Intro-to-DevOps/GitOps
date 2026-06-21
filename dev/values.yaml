@@ -6,110 +6,148 @@ backoffice-bff:
     service:
       type: NodePort
       nodePort: 30200
+    ingress:
+      enabled: false
 
 storefront-bff:
   backend:
     service:
       type: NodePort
       nodePort: 30201
+    ingress:
+      enabled: false
 
 swagger-ui:
   service:
     type: NodePort
     nodePort: 30202
+  ingress:
+    enabled: false
 
 cart:
   backend:
     service:
       type: NodePort
       nodePort: 30203
+    ingress:
+      enabled: false
 
 customer:
   backend:
     service:
       type: NodePort
       nodePort: 30204
+    ingress:
+      enabled: false
 
 inventory:
   backend:
     service:
       type: NodePort
       nodePort: 30205
+    ingress:
+      enabled: false
 
 location:
   backend:
     service:
       type: NodePort
       nodePort: 30206
+    ingress:
+      enabled: false
 
 media:
   backend:
     service:
       type: NodePort
       nodePort: 30207
+    ingress:
+      enabled: false
 
 order:
   backend:
     service:
       type: NodePort
       nodePort: 30208
+    ingress:
+      enabled: false
 
 payment:
   backend:
     service:
       type: NodePort
       nodePort: 30209
+    ingress:
+      enabled: false
 
 payment-paypal:
   backend:
     service:
       type: NodePort
       nodePort: 30210
+    ingress:
+      enabled: false
 
 product:
   backend:
     service:
       type: NodePort
       nodePort: 30211
+    ingress:
+      enabled: false
 
 promotion:
   backend:
     service:
       type: NodePort
       nodePort: 30212
+    ingress:
+      enabled: false
 
 rating:
   backend:
     service:
       type: NodePort
       nodePort: 30213
+    ingress:
+      enabled: false
 
 search:
   backend:
     service:
       type: NodePort
       nodePort: 30214
+    ingress:
+      enabled: false
 
 tax:
   backend:
     service:
       type: NodePort
       nodePort: 30215
+    ingress:
+      enabled: false
 
 recommendation:
   backend:
     service:
       type: NodePort
       nodePort: 30216
+    ingress:
+      enabled: false
 
 webhook:
   backend:
     service:
       type: NodePort
       nodePort: 30217
+    ingress:
+      enabled: false
 
 sampledata:
   backend:
     service:
       type: NodePort
       nodePort: 30218
+    ingress:
+      enabled: false
