@@ -2,11 +2,11 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
+- name: storefront-bff
+  repository: file://../yas/k8s/charts/storefront-bff
+  version: 0.1.0
 - name: cart
   repository: file://../yas/k8s/charts/cart
   version: 0.2.0
-- name: customer
-  repository: file://../yas/k8s/charts/customer
-  version: 0.1.0
-digest: sha256:b52cf5b9d5794a34ed7bea0c9ce2b718b3c6244fc52746a15dfcfcb7c8aed256
-generated: "2026-06-18T22:27:22.8723534+07:00"
+digest: sha256:4164287f36528ad3d750e8c86a707c45e59f732ca49439ecdeb6f86b227fa1a2
+generated: "2026-06-21T12:28:36.3239778+07:00"

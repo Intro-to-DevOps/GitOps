@@ -3,94 +3,113 @@ global:
 
 backoffice-bff:
   backend:
-    ingress:
-      host: "backoffice.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30100
 
 storefront-bff:
   backend:
-    ingress:
-      host: "storefront.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30082
 
 swagger-ui:
-  ingress:
-    host: "api.yas.local"
+  service:
+    type: NodePort
+    nodePort: 30083
 
 cart:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30084
 
 customer:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30085
 
 inventory:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30086
 
 location:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30087
 
 media:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30088
 
 order:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30089
 
 payment:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30090
 
 payment-paypal:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30091
 
 product:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30092
 
 promotion:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30093
 
 rating:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30094
 
 search:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30095
 
 tax:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30096
 
 recommendation:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30097
 
 webhook:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30098
 
 sampledata:
   backend:
-    ingress:
-      host: "api.yas.local"
+    service:
+      type: NodePort
+      nodePort: 30099
