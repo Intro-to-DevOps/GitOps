@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: cart-retry
+  namespace: yas-staging
+spec:
+  hosts:
+  - cart
+  http:
+  - route:
+    - destination:
+        host: cart
+        port:
+          number: 80
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+      retryOn: "5xx,reset,connect-failure"
+    timeout: 30s
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: customer-retry
+  namespace: yas-staging
+spec:
+  hosts:
+  - customer
+  http:
+  - route:
+    - destination:
+        host: customer
+        port:
+          number: 80
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+      retryOn: "5xx,reset,connect-failure"
+    timeout: 30s

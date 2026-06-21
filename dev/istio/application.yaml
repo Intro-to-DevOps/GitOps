@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yas-istio-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/Intro-to-DevOps/GitOps.git"
+    targetRevision: HEAD
+    path: dev/istio
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: yas-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
