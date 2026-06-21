@@ -1,0 +1,41 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-cart-to-customer
+  namespace: yas-dev
+spec:
+  selector:
+    matchLabels:
+      app: customer
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/yas-dev/sa/cart"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-customer-to-cart
+  namespace: yas-dev
+spec:
+  selector:
+    matchLabels:
+      app: cart
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/yas-dev/sa/customer"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: yas-dev
+spec:
+  action: DENY
+  rules:
+  - from:
+    - source:
+        notPrincipals: ["cluster.local/ns/yas-dev/sa/*"]
