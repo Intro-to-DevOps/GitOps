@@ -4,150 +4,171 @@ global:
 backoffice-bff:
   backend:
     image:
-      repository: ghcr.io/nashtech-garage/yas-backoffice-bff
-      tag: latest
-    ingress:
-      host: "backoffice.yas-staging.local"
+      repository: mk1505/yas-cart
+      tag: "467416e5"
+
+    service:
+      type: NodePort
+      nodePort: 300100
 
 storefront-bff:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-storefront-bff
       tag: latest
-    ingress:
-      host: "storefront.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30082
 
 swagger-ui:
   image:
     repository: ghcr.io/nashtech-garage/yas-swagger-ui
     tag: latest
-  ingress:
-    host: "api.yas-staging.local"
+  service:
+    type: NodePort
+    nodePort: 30083
 
 cart:
   backend:
     image:
-      repository: ghcr.io/nashtech-garage/yas-cart
-      tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+      repository: mk1505/yas-cart
+      tag: "467416e5"
+
+    service:
+      type: NodePort
+      nodePort: 30084
 
 customer:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-customer
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30085
 
 inventory:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-inventory
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30086
 
 location:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-location
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30087
 
 media:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-media
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30088
 
 order:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-order
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30089
 
 payment:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-payment
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30090
 
 payment-paypal:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-payment-paypal
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30091
 
 product:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-product
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30092
 
 promotion:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-promotion
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30093
 
 rating:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-rating
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30094
 
 search:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-search
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30095
 
 tax:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-tax
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30096
 
 recommendation:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-recommendation
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30097
 
 webhook:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-webhook
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30098
 
 sampledata:
   backend:
     image:
       repository: ghcr.io/nashtech-garage/yas-sampledata
       tag: latest
-    ingress:
-      host: "api.yas-staging.local"
+    service:
+      type: NodePort
+      nodePort: 30099
