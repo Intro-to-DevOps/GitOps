@@ -13,7 +13,11 @@ storefront-bff:
       type: NodePort
       nodePort: 30201
     ingress:
-      enabled: false
+      enabled: true
+      className: nginx
+      host: api.yas.local.com
+      path: /
+      pathType: Prefix
     image:
       repository: mk1505/yas-storefront-bff
       tag: ba0e8e64
