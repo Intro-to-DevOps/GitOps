@@ -11,6 +11,9 @@ backoffice-bff:
 
 storefront-bff:
   backend:
+    image:
+      repository: mk1505/yas-storefront-bff
+      tag: latest
     service:
       type: NodePort
       nodePort: 30201
@@ -26,6 +29,9 @@ swagger-ui:
 
 cart:
   backend:
+    image:
+      repository: mk1505/yas-cart
+      tag: latest
     service:
       type: NodePort
       nodePort: 30203
