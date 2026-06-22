@@ -15,9 +15,9 @@ dependencies:
   # - name: backoffice-ui
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/backoffice-ui
-  - name: storefront-bff
-    version: ">=0.0.0-0"
-    repository: file://../yas/k8s/charts/storefront-bff
+  # - name: storefront-bff
+  #   version: ">=0.0.0-0"
+  #   repository: file://../yas/k8s/charts/storefront-bff
   # - name: storefront-ui
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/storefront-ui
@@ -27,48 +27,27 @@ dependencies:
   - name: cart
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/cart
-  # - name: customer
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/customer
+  - name: customer
+    version: ">=0.0.0-0"
+    repository: file://../yas/k8s/charts/customer
   # - name: inventory
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/inventory
-  # - name: location
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/location
   # - name: media
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/media
   # - name: order
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/order
-  # - name: payment
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/payment
-  # - name: payment-paypal
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/payment-paypal
   # - name: product
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/product
-  # - name: promotion
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/promotion
-  # - name: rating
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/rating
   # - name: search
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/search
   # - name: tax
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/tax
-  # - name: recommendation
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/recommendation
-  # - name: webhook
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/webhook
-  # - name: sampledata
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/sampledata
+  - name: sampledata
+    version: ">=0.0.0-0"
+    repository: file://../yas/k8s/charts/sampledata

@@ -18,15 +18,15 @@ storefront-bff:
       host: api.yas.local.com
       path: /
       pathType: Prefix
-    image:
-      repository: mk1505/yas-storefront-bff
-      tag: ba0e8e64
 swagger-ui:
   service:
     type: NodePort
     nodePort: 30202
   ingress:
     enabled: false
+  image:
+    repository: mk1505/yas-swagger-ui
+    tag: latest
 cart:
   backend:
     service:
@@ -36,7 +36,7 @@ cart:
       enabled: false
     image:
       repository: mk1505/yas-cart
-      tag: ba0e8e64
+      tag: latest
 customer:
   backend:
     service:
@@ -46,7 +46,7 @@ customer:
       enabled: false
     image:
       repository: mk1505/yas-customer
-      tag: ba0e8e64
+      tag: latest
 inventory:
   backend:
     service:
@@ -148,3 +148,6 @@ sampledata:
       nodePort: 30218
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-sampledata
+      tag: latest
