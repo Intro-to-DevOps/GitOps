@@ -46,7 +46,7 @@ customer:
       enabled: false
     image:
       repository: mk1505/yas-customer
-      tag: latest
+      tag: ba0e8e64
 inventory:
   backend:
     service:
