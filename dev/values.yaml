@@ -25,9 +25,6 @@ swagger-ui:
     nodePort: 30202
   ingress:
     enabled: false
-  image:
-    repository: mk1505/yas-swagger-ui
-    tag: latest
 cart:
   backend:
     service:
@@ -149,6 +146,3 @@ sampledata:
       nodePort: 30218
     ingress:
       enabled: false
-    image:
-      repository: mk1505/yas-sampledata
-      tag: latest
