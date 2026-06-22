@@ -2,6 +2,9 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
+- name: storefront-bff
+  repository: file://../yas/k8s/charts/storefront-bff
+  version: 0.1.0
 - name: swagger-ui
   repository: file://../yas/k8s/charts/swagger-ui
   version: 0.1.0
@@ -14,5 +17,5 @@ dependencies:
 - name: sampledata
   repository: file://../yas/k8s/charts/sampledata
   version: 0.1.0
-digest: sha256:c0b93d9e5c7bb619f4e3db4a92deffc19395c5e2d1a06bcd1977f3063996de67
-generated: "2026-06-22T20:34:28.8126688+07:00"
+digest: sha256:5fff929ddfedbda7aca2c2cc0e904f010942125936e9fbafa92103dee353e6c5
+generated: "2026-06-22T21:13:41.0107983+07:00"
