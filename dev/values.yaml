@@ -27,7 +27,7 @@ swagger-ui:
     type: NodePort
     nodePort: 30202
   ingress:
-    enabled: false
+    enabled: true
 cart:
   backend:
     service:

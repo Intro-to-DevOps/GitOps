@@ -27,3 +27,15 @@ spec:
       app.kubernetes.io/name: storefront-bff
   mtls:
     mode: PERMISSIVE
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: swagger-ui-permissive
+  namespace: yas-dev
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: swagger-ui
+  mtls:
+    mode: PERMISSIVE
