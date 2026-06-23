@@ -23,8 +23,14 @@ dependencies:
 - name: media
   repository: file://../yas/k8s/charts/media
   version: 0.1.0
+- name: order
+  repository: file://../yas/k8s/charts/order
+  version: 0.2.0
+- name: product
+  repository: file://../yas/k8s/charts/product
+  version: 0.1.0
 - name: sampledata
   repository: file://../yas/k8s/charts/sampledata
   version: 0.1.0
-digest: sha256:4cd551f9e0a658f5a7e1282bbc8f4a731961c948fae10cfa985bace5c6b1f965
-generated: "2026-06-23T18:07:10.7983503+07:00"
+digest: sha256:415380e2ec5ea9c1a22fb18450abc0981939f163f3102c0a678d4e45f6341bc3
+generated: "2026-06-23T18:25:03.5865003+07:00"

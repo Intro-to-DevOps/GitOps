@@ -82,6 +82,9 @@ order:
       nodePort: 30208
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-order
+      tag: edad0f36
 payment:
   backend:
     service:
@@ -105,7 +108,9 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: ba0e8e64
+      tag: image:
+      repository: mk1505/yas-order
+      tag: edad0f36
 promotion:
   backend:
     service:
