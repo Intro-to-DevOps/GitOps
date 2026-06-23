@@ -131,7 +131,7 @@ sampledata:
       type: NodePort
       nodePort: 30218
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-sampledata
       tag: edad0f36

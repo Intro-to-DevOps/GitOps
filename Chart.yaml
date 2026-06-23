@@ -39,15 +39,15 @@ dependencies:
   - name: order
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/order
-  - name: product
-    version: ">=0.0.0-0"
-    repository: file://../yas/k8s/charts/product
-  - name: search
-    version: ">=0.0.0-0"
-    repository: file://../yas/k8s/charts/search
-  - name: tax
-    version: ">=0.0.0-0"
-    repository: file://../yas/k8s/charts/tax
-  - name: sampledata
-    version: ">=0.0.0-0"
-    repository: file://../yas/k8s/charts/sampledata
+  # - name: product
+  #   version: ">=0.0.0-0"
+  #   repository: file://../yas/k8s/charts/product
+  # - name: search
+  #   version: ">=0.0.0-0"
+  #   repository: file://../yas/k8s/charts/search
+  # - name: tax
+  #   version: ">=0.0.0-0"
+  #   repository: file://../yas/k8s/charts/tax
+  # - name: sampledata
+  #   version: ">=0.0.0-0"
+  #   repository: file://../yas/k8s/charts/sampledata
