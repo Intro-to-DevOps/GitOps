@@ -20,5 +20,29 @@ dependencies:
 - name: cart
   repository: file://../yas/k8s/charts/cart
   version: 0.2.0
-digest: sha256:308e7b69f6f585d1a40e014b0f169cc79ead191bdebbc8c4a513cd23bc870375
-generated: "2026-06-23T20:34:29.2807541+07:00"
+- name: customer
+  repository: file://../yas/k8s/charts/customer
+  version: 0.1.0
+- name: inventory
+  repository: file://../yas/k8s/charts/inventory
+  version: 0.1.0
+- name: media
+  repository: file://../yas/k8s/charts/media
+  version: 0.1.0
+- name: order
+  repository: file://../yas/k8s/charts/order
+  version: 0.2.0
+- name: product
+  repository: file://../yas/k8s/charts/product
+  version: 0.1.0
+- name: search
+  repository: file://../yas/k8s/charts/search
+  version: 0.1.0
+- name: tax
+  repository: file://../yas/k8s/charts/tax
+  version: 0.1.0
+- name: sampledata
+  repository: file://../yas/k8s/charts/sampledata
+  version: 0.1.0
+digest: sha256:bd28951e64cf309e857087c8e418e3f7b5b96403036386c7aa060c1df6b7b49a
+generated: "2026-06-23T20:45:44.5312792+07:00"
