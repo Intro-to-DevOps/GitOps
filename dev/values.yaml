@@ -55,6 +55,9 @@ inventory:
       nodePort: 30205
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-inventory
+      tag: edad0f36
 location:
   backend:
     service:

@@ -14,8 +14,11 @@ dependencies:
 - name: customer
   repository: file://../yas/k8s/charts/customer
   version: 0.1.0
+- name: inventory
+  repository: file://../yas/k8s/charts/inventory
+  version: 0.1.0
 - name: sampledata
   repository: file://../yas/k8s/charts/sampledata
   version: 0.1.0
-digest: sha256:5fff929ddfedbda7aca2c2cc0e904f010942125936e9fbafa92103dee353e6c5
-generated: "2026-06-22T21:13:41.0107983+07:00"
+digest: sha256:6f25b4fd7e13317ec141e6ba3dec9eda726a8196895c7fc19a398d3f6451a092
+generated: "2026-06-23T17:58:35.8516141+07:00"
