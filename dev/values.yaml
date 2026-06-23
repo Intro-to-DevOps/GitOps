@@ -72,6 +72,9 @@ media:
       nodePort: 30207
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-media
+      tag: edad0f36
 order:
   backend:
     service:
@@ -152,6 +155,9 @@ sampledata:
       nodePort: 30218
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-sampledata
+      tag: edad0f36
 backoffice-ui:
   ui:
     image:

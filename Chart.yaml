@@ -18,9 +18,9 @@ dependencies:
   - name: storefront-bff
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/storefront-bff
-  # - name: storefront-ui
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/storefront-ui
+  - name: storefront-ui
+    version: ">=0.0.0-0"
+    repository: file://../yas/k8s/charts/storefront-ui
   - name: swagger-ui
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/swagger-ui
@@ -33,9 +33,9 @@ dependencies:
   - name: inventory
     version: ">=0.0.0-0"
     repository: file://../yas/k8s/charts/inventory
-  # - name: media
-  #   version: ">=0.0.0-0"
-  #   repository: file://../yas/k8s/charts/media
+  - name: media
+    version: ">=0.0.0-0"
+    repository: file://../yas/k8s/charts/media
   # - name: order
   #   version: ">=0.0.0-0"
   #   repository: file://../yas/k8s/charts/order
