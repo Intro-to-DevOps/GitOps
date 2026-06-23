@@ -7,6 +7,9 @@ backoffice-bff:
       nodePort: 30200
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-backoffice-bff
+      tag: edad0f36
 storefront-bff:
   backend:
     service:

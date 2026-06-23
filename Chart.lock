@@ -2,6 +2,12 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
+- name: backoffice-bff
+  repository: file://../yas/k8s/charts/backoffice-bff
+  version: 0.1.0
+- name: backoffice-ui
+  repository: file://../yas/k8s/charts/backoffice-ui
+  version: 0.1.0
 - name: storefront-bff
   repository: file://../yas/k8s/charts/storefront-bff
   version: 0.1.0
@@ -29,8 +35,14 @@ dependencies:
 - name: product
   repository: file://../yas/k8s/charts/product
   version: 0.1.0
+- name: search
+  repository: file://../yas/k8s/charts/search
+  version: 0.1.0
+- name: tax
+  repository: file://../yas/k8s/charts/tax
+  version: 0.1.0
 - name: sampledata
   repository: file://../yas/k8s/charts/sampledata
   version: 0.1.0
-digest: sha256:415380e2ec5ea9c1a22fb18450abc0981939f163f3102c0a678d4e45f6341bc3
-generated: "2026-06-23T18:25:03.5865003+07:00"
+digest: sha256:bd28951e64cf309e857087c8e418e3f7b5b96403036386c7aa060c1df6b7b49a
+generated: "2026-06-23T18:42:20.1929302+07:00"
