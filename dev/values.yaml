@@ -132,6 +132,9 @@ search:
       nodePort: 30214
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-search
+      tag: edad0f36
 tax:
   backend:
     service:
@@ -139,6 +142,9 @@ tax:
       nodePort: 30215
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-tax
+      tag: edad0f36
 recommendation:
   backend:
     service:
