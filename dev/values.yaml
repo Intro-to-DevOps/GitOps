@@ -88,20 +88,6 @@ order:
     image:
       repository: mk1505/yas-order
       tag: edad0f36
-payment:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30209
-    ingress:
-      enabled: false
-payment-paypal:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30210
-    ingress:
-      enabled: false
 product:
   backend:
     service:
@@ -111,23 +97,7 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: image:
-      repository: mk1505/yas-order
       tag: edad0f36
-promotion:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30212
-    ingress:
-      enabled: false
-rating:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30213
-    ingress:
-      enabled: false
 search:
   backend:
     service:
@@ -148,13 +118,6 @@ tax:
     image:
       repository: mk1505/yas-tax
       tag: edad0f36
-recommendation:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30216
-    ingress:
-      enabled: false
 webhook:
   backend:
     service:
