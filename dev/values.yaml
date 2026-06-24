@@ -40,7 +40,7 @@ cart:
       enabled: false
     image:
       repository: mk1505/yas-cart
-      tag: ba0e8e64
+      tag: dev-d7ce1edf
 customer:
   backend:
     service:
