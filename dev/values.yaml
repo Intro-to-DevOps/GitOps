@@ -6,7 +6,7 @@ backoffice-bff:
       type: NodePort
       nodePort: 30200
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-backoffice-bff
       tag: edad0f36
@@ -37,7 +37,7 @@ cart:
       type: NodePort
       nodePort: 30203
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-cart
       tag: dev-d7ce1edf
@@ -47,7 +47,7 @@ customer:
       type: NodePort
       nodePort: 30204
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-customer
       tag: ba0e8e64
@@ -57,7 +57,7 @@ inventory:
       type: NodePort
       nodePort: 30205
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-inventory
       tag: edad0f36
@@ -67,14 +67,14 @@ location:
       type: NodePort
       nodePort: 30206
     ingress:
-      enabled: false
+      enabled: true
 media:
   backend:
     service:
       type: NodePort
       nodePort: 30207
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-media
       tag: edad0f36
@@ -84,7 +84,7 @@ order:
       type: NodePort
       nodePort: 30208
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-order
       tag: edad0f36
@@ -94,7 +94,7 @@ product:
       type: NodePort
       nodePort: 30211
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-product
       tag: edad0f36
@@ -104,7 +104,7 @@ search:
       type: NodePort
       nodePort: 30214
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-search
       tag: edad0f36
@@ -114,7 +114,7 @@ tax:
       type: NodePort
       nodePort: 30215
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-tax
       tag: edad0f36
@@ -124,7 +124,7 @@ webhook:
       type: NodePort
       nodePort: 30217
     ingress:
-      enabled: false
+      enabled: true
 sampledata:
   backend:
     service:
