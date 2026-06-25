@@ -6,7 +6,7 @@ backoffice-bff:
       type: NodePort
       nodePort: 30200
     ingress:
-      enabled: false
+      enabled: true
     image:
       repository: mk1505/yas-backoffice-bff
       tag: edad0f36
@@ -16,7 +16,7 @@ storefront-bff:
       type: NodePort
       nodePort: 30201
     ingress:
-      enabled: false
+      enabled: true
       className: nginx
       host: api.yas.local.com
       path: /
