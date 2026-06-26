@@ -144,4 +144,4 @@ storefront-ui:
   ui:
     image:
       repository: mk1505/yas-storefront
-      tag: dev-a301ebf5
+      tag: 8dfc15b6
