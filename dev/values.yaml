@@ -29,6 +29,8 @@ swagger-ui:
   service:
     type: NodePort
     nodePort: 30202
+  nodeSelector:
+    kubernetes.io/arch: amd64
   ingress:
     enabled: false
 cart:
