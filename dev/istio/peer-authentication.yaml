@@ -10,15 +10,6 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
-  name: default
-  namespace: yas-staging
-spec:
-  mtls:
-    mode: STRICT
----
-apiVersion: security.istio.io/v1beta1
-kind: PeerAuthentication
-metadata:
   name: storefront-bff-permissive
   namespace: yas-dev
 spec:
