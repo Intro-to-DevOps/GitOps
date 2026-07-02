@@ -27,6 +27,19 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
+  name: allow-ingress-swagger
+  namespace: yas-staging
+spec:
+  action: ALLOW
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: swagger-ui
+  rules:
+  - {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
   name: allow-internal
   namespace: yas-staging
 spec:
