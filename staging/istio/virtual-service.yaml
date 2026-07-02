@@ -141,15 +141,15 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: search-retry
+  name: backoffice-bff-retry
   namespace: yas-staging
 spec:
   hosts:
-  - search
+  - backoffice-bff
   http:
   - route:
     - destination:
-        host: search
+        host: backoffice-bff
         port:
           number: 80
     retries:
@@ -161,15 +161,15 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: rating-retry
+  name: storefront-bff-retry
   namespace: yas-staging
 spec:
   hosts:
-  - rating
+  - storefront-bff
   http:
   - route:
     - destination:
-        host: rating
+        host: storefront-bff
         port:
           number: 80
     retries:
@@ -181,55 +181,15 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: promotion-retry
+  name: sampledata-retry
   namespace: yas-staging
 spec:
   hosts:
-  - promotion
+  - sampledata
   http:
   - route:
     - destination:
-        host: promotion
-        port:
-          number: 80
-    retries:
-      attempts: 3
-      perTryTimeout: 5s
-      retryOn: "5xx,reset,connect-failure"
-    timeout: 30s
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: payment-retry
-  namespace: yas-staging
-spec:
-  hosts:
-  - payment
-  http:
-  - route:
-    - destination:
-        host: payment
-        port:
-          number: 80
-    retries:
-      attempts: 3
-      perTryTimeout: 5s
-      retryOn: "5xx,reset,connect-failure"
-    timeout: 30s
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: recommendation-retry
-  namespace: yas-staging
-spec:
-  hosts:
-  - recommendation
-  http:
-  - route:
-    - destination:
-        host: recommendation
+        host: sampledata
         port:
           number: 80
     retries:
