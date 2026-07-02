@@ -104,9 +104,9 @@ product:
       repository: mk1505/yas-product
       tag: edad0f36
 search:
-  nodeSelector:
-    kubernetes.io/arch: amd64
   backend:
+    nodeSelector:
+      kubernetes.io/arch: amd64
     service:
       type: NodePort
       nodePort: 30214
