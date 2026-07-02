@@ -1,14 +1,28 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: deny-all
+  name: allow-ingress
   namespace: yas-staging
 spec:
-  action: DENY
+  action: ALLOW
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: storefront-bff
   rules:
-  - from:
-    - source:
-        notPrincipals: ["cluster.local/ns/yas-staging/sa/*"]
+  - {}
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-ingress-backoffice
+  namespace: yas-staging
+spec:
+  action: ALLOW
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: backoffice-bff
+  rules:
+  - {}
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
@@ -28,12 +42,8 @@ spec:
           - "cluster.local/ns/yas-staging/sa/inventory"
           - "cluster.local/ns/yas-staging/sa/tax"
           - "cluster.local/ns/yas-staging/sa/media"
-          - "cluster.local/ns/yas-staging/sa/search"
           - "cluster.local/ns/yas-staging/sa/storefront-bff"
+          - "cluster.local/ns/yas-staging/sa/storefront-ui"
           - "cluster.local/ns/yas-staging/sa/backoffice-bff"
-          - "cluster.local/ns/yas-staging/sa/rating"
-          - "cluster.local/ns/yas-staging/sa/promotion"
-          - "cluster.local/ns/yas-staging/sa/payment"
-          - "cluster.local/ns/yas-staging/sa/payment-paypal"
-          - "cluster.local/ns/yas-staging/sa/recommendation"
-          - "cluster.local/ns/yas-staging/sa/webhook"
+          - "cluster.local/ns/yas-staging/sa/backoffice-ui"
+          - "cluster.local/ns/yas-staging/sa/sampledata"
