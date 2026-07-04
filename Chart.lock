@@ -2,44 +2,5 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
-- name: backoffice-bff
-  repository: file://../yas/k8s/charts/backoffice-bff
-  version: 0.1.0
-- name: backoffice-ui
-  repository: file://../yas/k8s/charts/backoffice-ui
-  version: 0.1.0
-- name: storefront-bff
-  repository: file://../yas/k8s/charts/storefront-bff
-  version: 0.1.0
-- name: storefront-ui
-  repository: file://../yas/k8s/charts/storefront-ui
-  version: 0.1.0
-- name: swagger-ui
-  repository: file://../yas/k8s/charts/swagger-ui
-  version: 0.1.0
-- name: cart
-  repository: file://../yas/k8s/charts/cart
-  version: 0.2.0
-- name: customer
-  repository: file://../yas/k8s/charts/customer
-  version: 0.1.0
-- name: inventory
-  repository: file://../yas/k8s/charts/inventory
-  version: 0.1.0
-- name: media
-  repository: file://../yas/k8s/charts/media
-  version: 0.1.0
-- name: order
-  repository: file://../yas/k8s/charts/order
-  version: 0.2.0
-- name: product
-  repository: file://../yas/k8s/charts/product
-  version: 0.1.0
-- name: search
-  repository: file://../yas/k8s/charts/search
-  version: 0.1.0
-- name: tax
-  repository: file://../yas/k8s/charts/tax
-  version: 0.1.0
-digest: sha256:8d1797120ee7ae524ce290c3185387e8cf4bf9def975b57870e4cfb800361c0a
-generated: "2026-07-04T16:57:12.1410655+07:00"
+digest: sha256:ff8ed5453e1392625fcfbd1d0f850b4d1767c558544a51ff460fff2da3a4715e
+generated: "2026-07-04T17:39:18.6737348+07:00"
