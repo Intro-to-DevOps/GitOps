@@ -8,5 +8,14 @@ dependencies:
 - name: backoffice-ui
   repository: file://../yas/k8s/charts/backoffice-ui
   version: 0.1.0
-digest: sha256:5041f89a5b0182048be7e98c2623afd9f4d1cb0dbbc2609f4f22600c34c7238c
-generated: "2026-07-04T17:45:58.9684194+07:00"
+- name: storefront-bff
+  repository: file://../yas/k8s/charts/storefront-bff
+  version: 0.1.0
+- name: storefront-ui
+  repository: file://../yas/k8s/charts/storefront-ui
+  version: 0.1.0
+- name: swagger-ui
+  repository: file://../yas/k8s/charts/swagger-ui
+  version: 0.1.0
+digest: sha256:1b3f4c786cfd8e67fd2b7dc555a4303b133530d402bc463f22e55ade6540021b
+generated: "2026-07-04T17:48:42.1521584+07:00"
