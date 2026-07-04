@@ -141,6 +141,26 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  name: search-retry
+  namespace: yas-dev
+spec:
+  hosts:
+  - search
+  http:
+  - route:
+    - destination:
+        host: search
+        port:
+          number: 80
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+      retryOn: "5xx,reset,connect-failure"
+    timeout: 30s
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
   name: backoffice-bff-retry
   namespace: yas-dev
 spec:
