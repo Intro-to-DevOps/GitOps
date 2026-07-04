@@ -49,6 +49,7 @@ spec:
     - source:
         principals:
           - "cluster.local/ns/yas-staging/sa/cart"
+          - "cluster.local/ns/yas-staging/sa/search"
           - "cluster.local/ns/yas-staging/sa/order"
           - "cluster.local/ns/yas-staging/sa/product"
           - "cluster.local/ns/yas-staging/sa/customer"
