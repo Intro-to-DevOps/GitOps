@@ -2,5 +2,11 @@ dependencies:
 - name: yas-configuration
   repository: file://../yas/k8s/charts/yas-configuration
   version: 0.4.0
-digest: sha256:ff8ed5453e1392625fcfbd1d0f850b4d1767c558544a51ff460fff2da3a4715e
-generated: "2026-07-04T17:39:18.6737348+07:00"
+- name: backoffice-bff
+  repository: file://../yas/k8s/charts/backoffice-bff
+  version: 0.1.0
+- name: backoffice-ui
+  repository: file://../yas/k8s/charts/backoffice-ui
+  version: 0.1.0
+digest: sha256:5041f89a5b0182048be7e98c2623afd9f4d1cb0dbbc2609f4f22600c34c7238c
+generated: "2026-07-04T17:45:58.9684194+07:00"
