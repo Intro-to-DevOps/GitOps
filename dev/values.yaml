@@ -132,16 +132,16 @@ webhook:
       nodePort: 30217
     ingress:
       enabled: false
-sampledata:
-  backend:
-    service:
-      type: NodePort
-      nodePort: 30218
-    ingress:
-      enabled: false
-    image:
-      repository: mk1505/yas-sampledata
-      tag: edad0f36
+# sampledata:
+#   backend:
+#     service:
+#       type: NodePort
+#       nodePort: 30218
+#     ingress:
+#       enabled: false
+#     image:
+#       repository: mk1505/yas-sampledata
+#       tag: edad0f36
 backoffice-ui:
   ui:
     image:
