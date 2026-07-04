@@ -32,5 +32,17 @@ dependencies:
 - name: order
   repository: file://../yas/k8s/charts/order
   version: 0.2.0
-digest: sha256:64ffed9ca4883645994a48b109f2b0781af0e938b368165cccb1d5624a5ea860
-generated: "2026-07-04T17:50:23.5712265+07:00"
+- name: product
+  repository: file://../yas/k8s/charts/product
+  version: 0.1.0
+- name: search
+  repository: file://../yas/k8s/charts/search
+  version: 0.1.0
+- name: tax
+  repository: file://../yas/k8s/charts/tax
+  version: 0.1.0
+- name: sampledata
+  repository: file://../yas/k8s/charts/sampledata
+  version: 0.1.0
+digest: sha256:bd28951e64cf309e857087c8e418e3f7b5b96403036386c7aa060c1df6b7b49a
+generated: "2026-07-04T17:52:57.7043279+07:00"
