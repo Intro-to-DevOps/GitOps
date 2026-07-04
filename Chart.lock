@@ -41,8 +41,5 @@ dependencies:
 - name: tax
   repository: file://../yas/k8s/charts/tax
   version: 0.1.0
-- name: sampledata
-  repository: file://../yas/k8s/charts/sampledata
-  version: 0.1.0
-digest: sha256:bd28951e64cf309e857087c8e418e3f7b5b96403036386c7aa060c1df6b7b49a
-generated: "2026-07-02T22:03:53.504213727+07:00"
+digest: sha256:8d1797120ee7ae524ce290c3185387e8cf4bf9def975b57870e4cfb800361c0a
+generated: "2026-07-04T16:57:12.1410655+07:00"
