@@ -102,7 +102,7 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: dev-940494ae
+      tag: dev-e7d9074f
 search:
   backend:
     nodeSelector:
@@ -114,7 +114,7 @@ search:
       enabled: false
     image:
       repository: mk1505/yas-search
-      tag: dev-52524de8
+      tag: dev-e7d9074f
 tax:
   backend:
     service:
@@ -144,7 +144,7 @@ sampledata:
       enabled: false
     image:
       repository: mk1505/yas-sampledata
-      tag: edad0f36
+      tag: dev-e7d9074f
 backoffice-ui:
   ui:
     image:
