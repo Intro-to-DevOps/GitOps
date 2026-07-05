@@ -45,7 +45,7 @@ cart:
       enabled: false
     image:
       repository: mk1505/yas-cart
-      tag: dev-d7ce1edf
+      tag: dev-8c0fed2a
 customer:
   backend:
     service:
@@ -55,7 +55,7 @@ customer:
       enabled: false
     image:
       repository: mk1505/yas-customer
-      tag: ba0e8e64
+      tag: dev-8c0fed2a
 inventory:
   backend:
     service:
@@ -65,7 +65,7 @@ inventory:
       enabled: false
     image:
       repository: mk1505/yas-inventory
-      tag: edad0f36
+      tag: dev-8c0fed2a
 location:
   backend:
     service:
