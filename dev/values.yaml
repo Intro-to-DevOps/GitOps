@@ -82,7 +82,7 @@ media:
       enabled: false
     image:
       repository: mk1505/yas-media
-      tag: edad0f36
+      tag: dev-e84ba9a9
 order:
   backend:
     service:
@@ -124,7 +124,7 @@ tax:
       enabled: false
     image:
       repository: mk1505/yas-tax
-      tag: edad0f36
+      tag: dev-e84ba9a9
 webhook:
   backend:
     service:
@@ -132,6 +132,9 @@ webhook:
       nodePort: 30217
     ingress:
       enabled: false
+    image:
+      repository: mk1505/yas-webhook
+      tag: dev-e84ba9a9
 sampledata:
   backend:
     service:
