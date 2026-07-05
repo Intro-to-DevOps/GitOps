@@ -97,7 +97,7 @@ product:
   backend:
     service:
       type: NodePort
-      nodePort: 30212
+      nodePort: 30211
     ingress:
       enabled: false
     image:
