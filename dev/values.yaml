@@ -117,7 +117,7 @@ search:
       enabled: false
     image:
       repository: mk1505/yas-search
-      tag: edad0f36
+      tag: dev-52524de8
 tax:
   backend:
     service:
