@@ -102,7 +102,7 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: dev-7877d8fa
+      tag: dev-940494ae
 search:
   backend:
     nodeSelector:
