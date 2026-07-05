@@ -103,9 +103,6 @@ product:
     image:
       repository: mk1505/yas-product
       tag: dev-7877d8fa
-    serviceMonitor:
-      enabled: true
-      path: /product/actuator/prometheus
 search:
   backend:
     nodeSelector:
