@@ -1,0 +1,44 @@
+pipeline {
+    agent {
+        docker {
+            image 'dtzar/helm-kubectl:3.12.0'
+            args '-u root'
+        }
+    }
+
+    environment {
+        NAMESPACE = 'yas-dev'
+        RELEASE_NAME = 'yas-app'
+    }
+
+    stages {
+        stage('Deploy to AKS via Helm') {
+            steps {
+                withCredentials([file(credentialsId: 'aks-kubeconfig-secret', variable: 'KUBECONFIG')]) {
+                    sh """
+                        echo "Đang triển khai lên AKS..."
+                        helm upgrade --install ${RELEASE_NAME} ./yas-chart \
+                        --namespace ${NAMESPACE} \
+                        --create-namespace \
+                        --set services.tax.tag=${params.tax_service} \
+                        --set services.product.tag=${params.product_service}
+                    """
+                }
+            }
+        }
+        
+        stage('Get Access Info') {
+            steps {
+                withCredentials([file(credentialsId: 'aks-kubeconfig-secret', variable: 'KUBECONFIG')]) {
+                    script {
+                        def NGINX_PORT = sh(script: "kubectl get svc nginx --namespace ${NAMESPACE} -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
+                        echo "Truy cập tại: http://api.yas.local.com"
+
+                        // Chèn Hyperlink trỏ tới Job Clean
+                        currentBuild.description = "<a href='http://172.17.177.119:8081/job/YAS-Clean-Deployment/'>🗑️ Click here to clean deployment</a>"
+                    }
+                }
+            }
+        }     
+    }
+}

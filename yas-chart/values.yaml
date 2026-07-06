@@ -1,0 +1,18 @@
+release:
+  namespace: dev
+
+services:
+  - name: cart-service
+    port: 8080
+    type: NodePort  # Đặt là NodePort nếu muốn expose trực tiếp
+    repository: mk1505/yas-cart
+    tag: latest
+    replicas: 1
+    
+  - name: product-service
+    port: 8080
+    type: NodePort
+    repository: mk1505/yas-product
+    tag: latest
+    replicas: 1
+  

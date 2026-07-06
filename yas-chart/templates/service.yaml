@@ -1,0 +1,16 @@
+{{- $namespace := .Values.release.namespace }}
+{{- range $index, $value := .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $value.name }}
+  namespace: {{ $namespace }}
+spec:
+  type: {{ $value.type }}
+  selector:
+    app: {{ $value.name }}
+  ports:
+    - port: {{ $value.port }}
+      targetPort: {{ $value.port }}
+{{- end }}

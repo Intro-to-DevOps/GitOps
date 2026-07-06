@@ -1,0 +1,25 @@
+{{- $namespace := .Values.release.namespace }}
+{{- range $index, $value := .Values.services }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $value.name }}-deployment
+  namespace: {{ $namespace }}
+spec:
+  replicas: {{ $value.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $value.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $value.name }}
+    spec:
+      containers:
+        - name: {{ $value.name }}
+          image: "{{ $value.repository }}:{{ $value.tag }}"
+          ports:
+            - containerPort: {{ $value.port }}
+              protocol: TCP
+{{- end }}

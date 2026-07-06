@@ -1,0 +1,31 @@
+pipeline {
+    // Tương tự, cần môi trường có chứa lệnh Helm
+    agent {
+        docker {
+            image 'alpine/k8s:1.28.2' 
+            args '-u root'
+        }
+    }
+
+    environment {
+        NAMESPACE = 'yas-dev'
+        RELEASE_NAME = 'yas-app'
+    }
+
+    stages {
+        stage('Clean build') {
+            steps {
+                withCredentials([file(credentialsId: 'aks-kubeconfig-secret', variable: 'KUBECONFIG')]) {
+                    sh """
+                        helm uninstall ${RELEASE_NAME} --namespace ${NAMESPACE}
+                    """
+                }
+            }
+        }
+    }
+    
+    // Cấu hình tự động dọn dẹp lịch sử build trên Jenkins để tránh đầy ổ cứng [cite: 2796]
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
+}
