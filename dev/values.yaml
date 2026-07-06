@@ -92,7 +92,7 @@ order:
       enabled: false
     image:
       repository: mk1505/yas-order
-      tag: dev-cea6f449
+      tag: dev-1cc6ed31
 product:
   backend:
     service:
