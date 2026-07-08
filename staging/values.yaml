@@ -1,5 +1,5 @@
 global:
-  domain: "yas.local"
+  domain: "staging.yas.local"
 backoffice-bff:
   backend:
     service:
