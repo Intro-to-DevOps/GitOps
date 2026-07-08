@@ -9,6 +9,7 @@ backoffice-bff:
       enabled: true
       host: backoffice.staging.yas.local.com
       path: /
+      pathType: Prefix
     image:
       repository: mk1505/yas-backoffice-bff
       tag: dev-cea6f449
