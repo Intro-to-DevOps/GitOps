@@ -4,7 +4,7 @@ backoffice-bff:
   backend:
     service:
       type: NodePort
-      nodePort: 30100
+      nodePort: 30099
     ingress:
       enabled: true
     image:
