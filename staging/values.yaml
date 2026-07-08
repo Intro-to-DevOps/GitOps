@@ -18,7 +18,7 @@ storefront-bff:
     ingress:
       enabled: true
       className: nginx
-      host: api.yas.local.com
+      host: api.staging.yas.local.com
       path: /
       pathType: Prefix
     image:
