@@ -7,9 +7,8 @@ backoffice-bff:
       nodePort: 30099
     ingress:
       enabled: true
-      host: api.staging.yas.local.com
+      host: backoffice.staging.yas.local.com
       path: /
-      pathType: Prefix
     image:
       repository: mk1505/yas-backoffice-bff
       tag: dev-cea6f449
