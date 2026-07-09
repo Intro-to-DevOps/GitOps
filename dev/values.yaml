@@ -126,7 +126,7 @@ search:
       enabled: false
     image:
       repository: mk1505/yas-search
-      tag: dev-e7d9074f
+      tag: edad0f36
 tax:
   backend:
     service:
