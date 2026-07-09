@@ -48,6 +48,10 @@ cart:
       tag: dev-8c0fed2a
 customer:
   backend:
+    livenessProbe:
+      initialDelaySeconds: 120
+    readinessProbe:
+      initialDelaySeconds: 120
     service:
       type: NodePort
       nodePort: 30204
@@ -58,6 +62,10 @@ customer:
       tag: dev-8c0fed2a
 inventory:
   backend:
+    livenessProbe:
+      initialDelaySeconds: 120
+    readinessProbe:
+      initialDelaySeconds: 120
     service:
       type: NodePort
       nodePort: 30205
@@ -75,6 +83,10 @@ location:
       enabled: false
 media:
   backend:
+    livenessProbe:
+      initialDelaySeconds: 120
+    readinessProbe:
+      initialDelaySeconds: 120
     service:
       type: NodePort
       nodePort: 30207
