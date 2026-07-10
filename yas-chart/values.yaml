@@ -15,4 +15,8 @@ services:
     repository: mk1505/yas-product
     tag: latest
     replicas: 1
-  
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}

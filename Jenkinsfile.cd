@@ -15,8 +15,8 @@ pipeline {
                         helm upgrade --install ${RELEASE_NAME} ./yas-chart \
                         --namespace ${NAMESPACE} \
                         --create-namespace \
-                        --set services.tax.tag=${params.tax_service} \
-                        --set services.product.tag=${params.product_service}
+                        --set services[0].tag=${params.tax_service} \
+                        --set services[1].tag=${params.product_service}
                     """
                 }
             }
