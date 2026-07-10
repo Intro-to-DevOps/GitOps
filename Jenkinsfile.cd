@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'dtzar/helm-kubectl:3.12.0'
-            args '-u root'
-        }
-    }
+    agent any
 
     environment {
         NAMESPACE = 'dev'
