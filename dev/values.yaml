@@ -114,7 +114,7 @@ product:
       enabled: false
     image:
       repository: mk1505/yas-product
-      tag: dev-e7d9074f
+      tag: dev-9901b9f8
 search:
   backend:
     nodeSelector:
@@ -136,7 +136,7 @@ tax:
       enabled: false
     image:
       repository: mk1505/yas-tax
-      tag: dev-e84ba9a9
+      tag: dev-9901b9f8
 webhook:
   backend:
     service:
