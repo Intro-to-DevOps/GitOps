@@ -20,3 +20,16 @@ serviceAccount:
   create: true
   automount: true
   annotations: {}
+
+ingress:
+  enabled: false
+
+httpRoute:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+service:
+  type: ClusterIP
+  port: 80
