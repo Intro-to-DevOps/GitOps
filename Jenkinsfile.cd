@@ -26,7 +26,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'aks-kubeconfig-secret', variable: 'KUBECONFIG')]) {
                     script {
-                        def NGINX_PORT = sh(script: "kubectl get svc nginx --namespace ${NAMESPACE} -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
+                        // def NGINX_PORT = sh(script: "kubectl get svc nginx --namespace ${NAMESPACE} -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
                         echo "Truy cập tại: http://api.yas.local.com"
 
                         // Chèn Hyperlink trỏ tới Job Clean

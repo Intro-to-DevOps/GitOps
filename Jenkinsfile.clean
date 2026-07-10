@@ -1,11 +1,5 @@
 pipeline {
-    // Tương tự, cần môi trường có chứa lệnh Helm
-    agent {
-        docker {
-            image 'alpine/k8s:1.28.2' 
-            args '-u root'
-        }
-    }
+    agent any
 
     environment {
         NAMESPACE = 'dev'
