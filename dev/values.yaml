@@ -136,7 +136,7 @@ tax:
       enabled: false
     image:
       repository: mk1505/yas-tax
-      tag: cd32073f
+      tag: 16bde6a2
 webhook:
   backend:
     service:
